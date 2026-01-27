@@ -6,6 +6,78 @@
     <title>To-do List</title>
 </head>
 <body>
-    <h1>To-do List</h1>
+    <header>
+        <div class="container">
+            <h1>To do app</h1>
+            <div class="tool-bar">
+                <button class="tool">New Task</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <ul class="list-container">
+                    <li><button class="list-item">Default</button></li>
+                    <li><button id="create-project-btn">Create Project</button></li>
+                </ul>
+            </div>
+        </section>
+        <section id="tasks">
+            <div class="container">
+                <h2>Tasks</h2>
+                <ul class="list-container">
+                    <li><button class="list-item">Task 1</button></li>
+                </ul>
+            </div>
+        </section>
+        <section id="task-details">
+            <div class="container">
+                <div class="details-container">
+
+                </div>
+            </div>
+        </section>
+        <dialog id="create-project-panel">
+            <form action="" method="post">
+                <label for="new-project-title">Title</label>
+                <input id="new-project-title" name="title" type="text">
+                <br/>
+                <button id="create-project-panel-close" type="button">Close</button>
+                <button type="submit">Submit</button>
+            </form>
+        </dialog>
+
+        <dialog id="rename-project-panel">
+            <form action="" method="post">
+                <label for="project-id">id</label>
+                <input id="project-id" name="id" type="text" readonly>
+                <br/>
+                <label for="current-project-title">Current Title</label>
+                <input id="current-project-title" name="current-title" type="text" readonly>
+                <br/>
+                <label for="renamed-project-title">New Title</label>
+                <input id="renamed-project-title" name="new-title" type="text">
+                <br/>
+                
+                <button id="rename-project-panel-close" type="button">Close</button>
+                <button type="submit">Submit</button>
+            </form>
+        </dialog>
+
+        <dialog id="delete-project-panel">
+            <form action="" method="post">
+                <label for="delete-id">id</label>
+                <input id="delete-id" name="id" type="text" readonly>
+                <br/>
+                <label for="delete-project-title">Current Title</label>
+                <input id="delete-project-title" name="title" type="text" readonly>
+                <br/>                
+                <button id="delete-project-panel-close" type="button">Close</button>
+                <button type="submit">Submit</button>
+            </form>
+        </dialog>
+    </main>
 </body>
 </html>
