@@ -6,7 +6,7 @@ class Project{
     constructor(title){
         this.#id = crypto.randomUUID();
         this.title = title;
-        this.tasks = [];
+        this.#tasks = [];
     }
 
     get id() {
@@ -15,6 +15,10 @@ class Project{
 
     get tasks(){
         return this.#tasks;
+    }
+
+    sortTasks(){
+        this.#tasks.sort((a,b) => a.dueDate - b.dueDate);
     }
 }
 

@@ -10,16 +10,15 @@ function createElement({type, textContent = undefined, classList = [], dataset =
     }
 
     if(!!dataset && typeof dataset === "object"){
-        const keys = Object.keys(dataset);
-        for(let key of keys){
-            element.dataset[key] = dataset[key];
+        for(let [key, value] of Object.entries(dataset)){
+            element.dataset[key] = String(value);
         }
     }
 
     if(!!attributes && typeof attributes === "object"){
-        const keys = Object.keys(attributes);
-        for(let key of keys){
-            element.setAttribute(key, attributes[key]);
+        for(let [key, value] of Object.entries(attributes)){
+            if(key in element) element[key] = value;
+            else element.setAttribute(key, String(value));
         }
     }
 

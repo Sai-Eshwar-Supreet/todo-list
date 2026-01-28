@@ -27,7 +27,10 @@
         </section>
         <section id="tasks">
             <div class="container">
-                <h2>Tasks</h2>
+                <header>
+                    <h2>Tasks</h2>
+                    <button id="create-new-task-btn">Create Task</button>
+                </header>
                 <ul class="list-container">
                     <li><button class="list-item">Task 1</button></li>
                 </ul>
@@ -36,39 +39,7 @@
         <section id="task-details">
             <div class="container">
                 <h2>Task details</h2>
-                <div class="details-container">
-                    <!-- Title -->
-                    <div class="detail-row">
-                        <label for="detail-title">Title</label>
-                        <input id="detail-title" type="text" name="title">
-                    </div>
-                    <!-- Due Date -->
-                    <div class="detail-row">
-                        <label for="detail-date">Date</label>
-                        <input id="detail-date" type="date" name="dueDate">
-                    </div>
-                    <!-- Priority -->
-                    <div class="detail-row">
-                        <label for="detail-priority">Priority</label>
-                        <select name="priority" id="detail-priority">
-                            <option value="P0">P0 - Immediate</option>
-                            <option value="P1">P1 - Critical</option>
-                            <option value="P2" selected>P2 - Important</option>
-                            <option value="P3">P3 - Routine</option>
-                            <option value="P4">P4 - Low / Optional</option>
-                        </select>
-                    </div>
-                    <!-- IsCompleted -->
-                    <div class="detail-row">
-                        <label for="detail-completed">Is Completed</label>
-                        <input id="detail-completed" type="checkbox" name="isCompleted">
-                    </div>
-                    <!-- Notes -->
-                    <div class="detail-row">
-                        <label for="detail-notes">Notes</label>
-                        <textarea name="notes" id="detail-notes"></textarea>
-                    </div>
-                </div>
+                <div class="details-container"></div>
             </div>
         </section>
         <dialog id="create-project-panel">
@@ -102,6 +73,53 @@
                 <input id="deleted-project-title" name="title" type="text" readonly>
                 <br/>                
                 <button id="delete-project-panel-close" type="button">Close</button>
+                <button type="submit">Submit</button>
+            </form>
+        </dialog>
+
+        <!-- Task -->
+
+        <dialog id="create-task-panel">
+            <form action="" method="post">
+                <!-- Title -->
+                <div class="form-row">
+                    <label for="create-task-title">Title</label>
+                    <input id="create-task-title" type="text" name="title" placeholder="Add a title">
+                </div>
+                <!-- Due Date -->
+                <div class="form-row">
+                    <label for="create-task-date">Date</label>
+                    <input id="create-task-date" type="date" name="dueDate">
+                </div>
+                <!-- Priority -->
+                <div class="form-row">
+                    <label for="create-task-priority">Priority</label>
+                    <select name="priority" id="create-task-priority">
+                        <button>
+                            <selectedcontent></selectedcontent>
+                        </button>
+                        <option value="P0">P0 - Immediate</option>
+                        <option value="P1">P1 - Critical</option>
+                        <option value="P2" selected>P2 - Important</option>
+                        <option value="P3">P3 - Routine</option>
+                        <option value="P4">P4 - Low / Optional</option>
+                    </select>
+                </div>
+                <div>             
+                    <button id="create-task-panel-close" type="button">Close</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </dialog>
+
+        <dialog id="delete-task-panel">
+            <form action="" method="post">
+                <input name="id" type="text" readonly hidden>
+                <br/>
+                <label for="deleted-task-title">Title</label>
+                <input id="deleted-task-title" name="title" type="text" readonly>
+                <br/>                
+                <button id="delete-task-panel-close" type="button">Close</button>
                 <button type="submit">Submit</button>
             </form>
         </dialog>

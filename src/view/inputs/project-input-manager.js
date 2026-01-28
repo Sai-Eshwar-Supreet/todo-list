@@ -18,18 +18,22 @@ function selectProject(id) {
 }
 
 function handleProjectClickEvent(event){
-    const action = event.target.dataset.action;
+
+    const trigger = event.target.closest("[data-action]");
+    if(!trigger) return;
+
+    const action = trigger.dataset.action;
     if(!action) return;
 
     switch(action){
         case "select":
-            selectProject(event.target.dataset.id);
+            selectProject(trigger.dataset.id);
             break;
         case "edit": 
-            editProjectForm.open({id: event.target.dataset.id , title: event.currentTarget.dataset.title })
+            editProjectForm.open({id: trigger.dataset.id , title: event.currentTarget.dataset.title })
             break;
         case "delete":
-            deleteProjectForm.open({id: event.target.dataset.id, title: event.currentTarget.dataset.title });
+            deleteProjectForm.open({id: trigger.dataset.id, title: event.currentTarget.dataset.title });
             break;
     }
 }

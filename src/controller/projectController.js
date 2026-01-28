@@ -7,7 +7,7 @@ const projectController = (
             const title = formData.get("title");
             const id = createProject({title});
             
-            select(id);
+            selectProject(id);
 
             saveState();
             render();

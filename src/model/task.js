@@ -6,7 +6,7 @@ class Task{
     priority;
     isClosed;
 
-    constructor(title, notes = "", dueDate = Date.now(), priority="Easy", isClosed = false){
+    constructor(title, notes = "", dueDate = Date.now(), priority="P0", isClosed = false){
         this.#id = crypto.randomUUID();
         this.title = title;
         this.notes = notes;

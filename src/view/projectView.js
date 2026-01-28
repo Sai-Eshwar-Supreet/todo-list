@@ -52,7 +52,7 @@ function createProject(id, title){
 
 function renderProjects(projects){
     projectContainer.innerHTML = "";
-    for(let project in projects){
+    for(let project of projects){
         const element = createProject(project.id, project.title)
 
         projectContainer.appendChild(element);

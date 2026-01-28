@@ -14,21 +14,35 @@ function selectTask(id) {
 }
 
 function handleTaskClickEvent(event){
-    const action = event.target.dataset.action;
+
+    const trigger = event.target.closest("[data-action]");
+
+    if(!trigger) return;
+
+    const action = trigger.dataset.action;
 
     if(!action) return;
 
     switch(action){
         case "select":
-            selectTask(event.target.dataset.id);
+            selectTask(trigger.dataset.id);
             break;
         case "delete":
-            deleteTaskPanel.open({id: event.target.dataset.id, title: event.currentTarget.dataset.title });
+            deleteTaskPanel.open({id: trigger.dataset.id, title: event.currentTarget.dataset.title });
             break;
     }
+}
+
+function handleTaskSaveEvent(event){
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    console.log(formData);
+
+    taskController.update(formData);
 }
 
 const createTaskBtn = document.querySelector("#create-new-task-btn");
 createTaskBtn.addEventListener('click', () => createTaskPanel.open());
 
-export { handleTaskClickEvent }
+export { handleTaskClickEvent, handleTaskSaveEvent}

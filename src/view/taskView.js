@@ -49,7 +49,7 @@ function createTask(id, title, dueDate, isComplete){
 
 function renderTasks(tasks){
     taskContainer.innerHTML = "";
-    for(let task in tasks){
+    for(let task of tasks){
         const element = createTask(task.id, task.title, task.dueDate, task.isComplete)
 
         taskContainer.appendChild(element);
