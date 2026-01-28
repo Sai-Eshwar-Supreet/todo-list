@@ -17,10 +17,11 @@
     <main>
         <section id="projects">
             <div class="container">
-                <h2>Projects</h2>
+                <header>
+                    <h2>Projects</h2>
+                    <button id="create-new-project-btn">Create Project</button>
+                </header>
                 <ul class="list-container">
-                    <li><button class="list-item">Default</button></li>
-                    <li><button id="create-project-btn">Create Project</button></li>
                 </ul>
             </div>
         </section>
@@ -34,8 +35,39 @@
         </section>
         <section id="task-details">
             <div class="container">
+                <h2>Task details</h2>
                 <div class="details-container">
-
+                    <!-- Title -->
+                    <div class="detail-row">
+                        <label for="detail-title">Title</label>
+                        <input id="detail-title" type="text" name="title">
+                    </div>
+                    <!-- Due Date -->
+                    <div class="detail-row">
+                        <label for="detail-date">Date</label>
+                        <input id="detail-date" type="date" name="dueDate">
+                    </div>
+                    <!-- Priority -->
+                    <div class="detail-row">
+                        <label for="detail-priority">Priority</label>
+                        <select name="priority" id="detail-priority">
+                            <option value="P0">P0 - Immediate</option>
+                            <option value="P1">P1 - Critical</option>
+                            <option value="P2" selected>P2 - Important</option>
+                            <option value="P3">P3 - Routine</option>
+                            <option value="P4">P4 - Low / Optional</option>
+                        </select>
+                    </div>
+                    <!-- IsCompleted -->
+                    <div class="detail-row">
+                        <label for="detail-completed">Is Completed</label>
+                        <input id="detail-completed" type="checkbox" name="isCompleted">
+                    </div>
+                    <!-- Notes -->
+                    <div class="detail-row">
+                        <label for="detail-notes">Notes</label>
+                        <textarea name="notes" id="detail-notes"></textarea>
+                    </div>
                 </div>
             </div>
         </section>
@@ -49,30 +81,25 @@
             </form>
         </dialog>
 
-        <dialog id="rename-project-panel">
+        <dialog id="edit-project-panel">
             <form action="" method="post">
-                <label for="project-id">id</label>
-                <input id="project-id" name="id" type="text" readonly>
+                <input name="id" type="text" readonly hidden>
                 <br/>
-                <label for="current-project-title">Current Title</label>
-                <input id="current-project-title" name="current-title" type="text" readonly>
-                <br/>
-                <label for="renamed-project-title">New Title</label>
-                <input id="renamed-project-title" name="new-title" type="text">
+                <label for="edited-project-title">Title</label>
+                <input id="edited-project-title" name="title" type="text">
                 <br/>
                 
-                <button id="rename-project-panel-close" type="button">Close</button>
+                <button id="edit-project-panel-close" type="button">Close</button>
                 <button type="submit">Submit</button>
             </form>
         </dialog>
 
         <dialog id="delete-project-panel">
             <form action="" method="post">
-                <label for="delete-id">id</label>
-                <input id="delete-id" name="id" type="text" readonly>
+                <input name="id" type="text" readonly hidden>
                 <br/>
-                <label for="delete-project-title">Current Title</label>
-                <input id="delete-project-title" name="title" type="text" readonly>
+                <label for="deleted-project-title">Title</label>
+                <input id="deleted-project-title" name="title" type="text" readonly>
                 <br/>                
                 <button id="delete-project-panel-close" type="button">Close</button>
                 <button type="submit">Submit</button>

@@ -1,14 +1,20 @@
 class Project{
     #id;
     title;
-    taskIds;
+    #tasks;
 
-    constructor(){
+    constructor(title){
         this.#id = crypto.randomUUID();
+        this.title = title;
+        this.tasks = [];
     }
 
     get id() {
         return this.#id;
+    }
+
+    get tasks(){
+        return this.#tasks;
     }
 }
 

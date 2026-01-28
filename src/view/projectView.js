@@ -1,25 +1,9 @@
-import { deleteProjectForm, loadProject, renameProjectForm } from "../inputs/project-manager";
-import { createElementRecursively } from "./dom-factory";
+import { createElementRecursively } from "./factories/dom-factory";
+import { handleProjectClickEvent } from "./inputs/project-input-manager";
 
-function handleClickEvent(event){
-    const action = event.target.dataset.action;
-    if(!action) return;
+const projectContainer = document.querySelector("#projects > .container > .list-container");
 
-    switch(action){
-        case "load":
-            loadProject(event.target.dataset.id);
-            break;
-        case "rename": 
-            renameProjectForm.open({id: event.target.dataset.id , ["current-title"]: event.currentTarget.dataset.title })
-            break;
-        case "delete":
-            deleteProjectForm.open({id: event.target.dataset.id, title: event.currentTarget.dataset.title });
-            break;
-    }
-    
-}
-
-export const createProject = function(title, id){
+function createProject(id, title){
 
     const bluePrint = {
         type: "li",
@@ -34,10 +18,10 @@ export const createProject = function(title, id){
                     },
                     {
                         type: "button",
-                        textContent: "Rename",
+                        textContent: "Edit",
                         dataset: {
                             id,
-                            action: "rename"
+                            action: "edit"
                         }
                     },
                     {
@@ -54,13 +38,25 @@ export const createProject = function(title, id){
         dataset: {
             id,
             title,
-            action: "load"
+            action: "select"
         },
     };
 
     const projectItemUI = createElementRecursively(bluePrint);
 
-    projectItemUI.addEventListener('click', handleClickEvent);
+    projectItemUI.addEventListener('click', handleProjectClickEvent);
 
     return projectItemUI;
 };
+
+
+function renderProjects(projects){
+    projectContainer.innerHTML = "";
+    for(let project in projects){
+        const element = createProject(project.id, project.title)
+
+        projectContainer.appendChild(element);
+    }
+}
+
+export {renderProjects};

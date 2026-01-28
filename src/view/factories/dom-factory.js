@@ -1,4 +1,4 @@
-function createElement({type, textContent = undefined, classList = [], dataset = {}, props = {} }){
+function createElement({type, textContent = undefined, classList = [], dataset = {}, attributes = {} }){
     if(!type || typeof(type) !== 'string') throw Error(`Expected type string. Provided: ${type}`);
 
     const element = document.createElement(type);
@@ -16,10 +16,10 @@ function createElement({type, textContent = undefined, classList = [], dataset =
         }
     }
 
-    if(!!props && typeof props === "object"){
-        const keys = Object.keys(props);
+    if(!!attributes && typeof attributes === "object"){
+        const keys = Object.keys(attributes);
         for(let key of keys){
-            element[key] = props[key];
+            element.setAttribute(key, attributes[key]);
         }
     }
 
