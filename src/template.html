@@ -106,10 +106,11 @@
 
         <dialog id="create-task-panel">
             <form action="" method="post">
+                <h2 class="form-header">Create New Task</h2>
                 <!-- Title -->
                 <div class="form-row">
                     <label for="create-task-title">Title</label>
-                    <input id="create-task-title" type="text" name="title" placeholder="Add a title">
+                    <input id="create-task-title" type="text" name="title" placeholder="Add a title" required>
                 </div>
                 <!-- Due Date -->
                 <div class="form-row">
@@ -132,7 +133,7 @@
                 </div>
                 <div class="tool-list">             
                     <button class="cta primary" type="submit">Create</button>
-                    <button class="cta secondary" id="create-task-panel-close" type="button">Close</button>
+                    <button class="cta secondary" id="create-task-panel-close" type="button">Cancel</button>
                 </div>
             </form>
         </dialog>
@@ -140,13 +141,14 @@
         <dialog id="delete-task-panel">
             <form action="" method="post">
                 <input name="id" type="text" readonly hidden>
+                <h2 class="form-header">Are you sure?</h2>
                 <div class="form-row">
                     <label for="deleted-task-title">Title</label>
                     <input id="deleted-task-title" name="title" type="text" readonly>
                 </div>
                 <div class="tool-list">
                     <button class="cta primary danger" type="submit">Delete</button>
-                    <button class="cta secondary" id="delete-task-panel-close" type="button">Close</button>
+                    <button class="cta secondary" id="delete-task-panel-close" type="button">Cancel</button>
                 </div>
             </form>
         </dialog>
