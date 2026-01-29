@@ -15,12 +15,11 @@ img{
 /* ==================== TOKENS ==================== */
 
 :root{
-
     /* Font sizes */
     --font-size-large: 1.5rem;
     --font-size-medium: 1.25rem;
     --font-size-normal: 1rem;
-    --font-size-small: 0.85rem;
+    --font-size-small: 0.75rem;
 
     /* Font Weights */
     --font-weight-regular: 400;
@@ -36,14 +35,32 @@ img{
     --radius-small: 8px;
 
     /* Shadows */
-    --shadow-lift: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
+    --shadow-lift-light: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
+    --shadow-lift-regular: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+    --shadow-lift-heavy: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+
+    --shadow-light: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+    --shadow-regular: 0 0 8px 0 rgba(0, 0, 0, 0.15);
+    --shadow-heavy: 0 0 8px 0 rgba(0, 0, 0, 0.25);
 
     /* Colors */
-    --color-bg-base: #f5eee9;
-    --color-bg-alt: #f1ddce;
-    --color-text-primary: #3b1a01;
-    --color-text-secondary: #8b6d58;
-    --color-accent: #db6c17;
+    --color-bg-base: #fbfaf8;
+    --color-neutral-900: black;
+    --color-neutral-600: gray;
+    --color-neutral-200: lightgray;
+    --color-neutral-100: white;
+
+    --color-accent: #3b84cc;
+    --color-success: #11e245;
+    --color-danger: #e21111;
+
+    /* Priority Colors */
+    --color-P0: #D64545;
+    --color-P1: #E67E22;
+    --color-P2: #daa411;
+    --color-P3: #4A90E2;
+    --color-P-low: #9AA4AE;
+
 }
 
 /* ==================== LAYOUT ==================== */
@@ -56,7 +73,7 @@ body{
     justify-content: stretch;
 
 
-    background-color: #fbfaf8;
+    background-color: var(--color-bg-base);
 
     
     font-family: 'Inter', system-ui, sans-serif;
@@ -64,7 +81,6 @@ body{
 }
 
 body > header{
-
     font-size: var(--font-size-large);
 
     max-height: 100px;
@@ -89,7 +105,7 @@ main section{
     display: flex;
     flex-direction: column;
 
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+    box-shadow:var(--shadow-light);
 }
 
 section > header{
@@ -101,7 +117,7 @@ section > header{
     min-height: 60px;
 
     padding-bottom: var(--space-small);
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--color-neutral-900);
     margin-bottom: var(--space-medium);
 }
 
@@ -113,7 +129,7 @@ section > header{
 }
 
 .list-container .list-item{
-    --active-color: grey;
+    --active-color: var(--color-neutral-600);
 
     user-select: none;
 
@@ -171,7 +187,7 @@ section{
     padding: var(--space-large);
     border-radius: var(--radius-small) var(--radius-small) 0 0;
 
-    background-color: white;
+    background-color: var(--color-neutral-100);
 }
 
 ul{
@@ -198,13 +214,13 @@ button.create-button{
 
     border-radius: var(--radius-small);
 
-    border: 1px solid lightgray;
+    border: 1px solid var(--color-neutral-200);
 
     gap: var(--space-small);
 }
 
 button.create-button:hover{
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-light);
 }
 
 button.create-button,
@@ -215,7 +231,7 @@ button.create-button .icon{
 }
 
 button.create-button .icon{
-    color: #3b84cc;
+    color: var(--color-accent);
 }
 
 /* Projects */
@@ -226,7 +242,7 @@ button.create-button .icon{
 }
 
 .project-item button svg{
-    color: rgba(0, 0, 0, 0.25);
+    color: var(--color-neutral-200);
 }
 
 .project-item button:disabled{
@@ -234,44 +250,40 @@ button.create-button .icon{
 }
 
 .project-item button:hover:not(:disabled) svg{
-    color: black;
+    color: var(--color-neutral-900);
 }
 
 .project-item.active{
     border-left: 5px solid var(--active-color);
-    --active-color: rgb(49, 169, 209);
+    --active-color: var(--color-accent);
 }
 
 /* Task */
 
 .list-item.task-item.task-P0{
-    --active-color: #D64545;
+    --active-color: var(--color-P0);
 }
 
 
 .list-item.task-item.task-P1{
-    --active-color: #E67E22;
+    --active-color: var(--color-P1);
 }
 
 .list-item.task-item.task-P2{
-    --active-color: #daa411;
+    --active-color: var(--color-P2);
 }
 
 .list-item.task-item.task-P3{
-    --active-color: #4A90E2;
-}
-
-.list-item.task-item.task-P4{
-    --active-color: #9AA4AE;
+    --active-color: var(--color-P3);
 }
 
 .list-item.task-item{
-    --active-color: #9AA4AE;
+    --active-color: var(--color-P-low);
     border-left: 5px solid var(--active-color);
 }
 
 .task-item .status-indicator{
-    font-size: 0.75em;
+    font-size: var(--font-size-small);
 
     border-radius: var(--radius-small);
     background-color: var(--active-color);
@@ -280,10 +292,10 @@ button.create-button .icon{
 }
 
 .task-item .due-date{
-    font-size: 0.75em;
-    font-weight: 600;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semi);
     border-radius: var(--radius-small);
-    border: 1px solid gray;
+    border: 1px solid var(--color-neutral-600);
     padding: calc(var(--space-small) / 2) var(--space-small);
 }
 
@@ -301,8 +313,8 @@ dialog{
     border: 2px solid black;
     border-radius: var(--radius-small);
 
-    background-color: white;
-    color: black;
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-900);
 
 }
 
@@ -315,7 +327,7 @@ form{
 .form-header{
     font-size: var(--font-size-medium);
     text-align: center;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid var(--color-neutral-200);
     padding-bottom: var(--space-small);
 }
 
@@ -337,7 +349,7 @@ input, select, textarea{
     padding: var(--space-small);
 
     outline: none;
-    border: 1px solid lightgray;
+    border: 1px solid var(--color-neutral-200);
 }
 
 .hidden-element{
@@ -353,7 +365,7 @@ input:hover:not(:read-only),
 select:hover:not(:read-only),
 button:hover:not(:read-only),
 textarea:hover:not(:read-only){
-    outline: 1px solid grey;
+    outline: 1px solid var(--color-neutral-600);
 }
 
 select:focus:not(:read-only),
@@ -362,7 +374,7 @@ input:focus:not(:read-only),
 input:focus-visible:not(:read-only),
 textarea:focus:not(:read-only),
 textarea:focus-visible:not(:read-only){
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-regular);
 }
 
 select, ::picker(select){
@@ -374,7 +386,7 @@ option{
 }
 
 option + option{
-    border-top: 1px solid lightgrey;
+    border-top: 1px solid var(--color-neutral-200);
 }
 
 textarea{
@@ -390,29 +402,29 @@ button.cta{
 }
 
 button.primary{
-    background-color: #3f82c7;
-    color: white;
+    background-color: var(--color-accent);
+    color: var(--color-neutral-100);
     border: none;
     padding: var(--space-small);
 }
 
 button.primary.success{
-    background-color: green;
+    background-color: var(--color-success);
 }
 
 button.primary.danger{
-    background-color: red;
+    background-color: var(--color-danger);
 }
 
 button.secondary{
     background: none;
-    border: 1px solid lightgrey;
-    color: black;
+    border: 1px solid var(--color-neutral-200);
+    color: var(--color-neutral-900);
 }
 
 button.secondary.success{
-    color: green;
+    color: var(--color-success);
 }
 button.secondary.danger{
-    color: red;
+    color: var(--color-danger);
 }
