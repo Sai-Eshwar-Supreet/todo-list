@@ -1,3 +1,4 @@
+import { compareAsc } from "date-fns";
 import Task from "./task";
 
 class Project{
@@ -20,7 +21,7 @@ class Project{
     }
 
     sortTasks(){
-        this.#tasks.sort((a,b) => a.dueDate - b.dueDate);
+        this.#tasks.sort((a,b) => compareAsc(a.dueDate, b.dueDate));
     }
 
     toSerializedData(){

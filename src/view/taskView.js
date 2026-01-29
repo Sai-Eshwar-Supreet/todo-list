@@ -7,7 +7,7 @@ function createTask(id, title, dueDate, priority, status, isSelected){
 
     const bluePrint = {
         type: "li",
-        classList: ["list-item", "task-item", `task-${priority}`, isSelected? "active-task": ""],
+        classList: ["list-item", "task-item", `task-${priority}`, isSelected? "active": ""],
         children: [
             {
                 type: "p",
@@ -21,6 +21,7 @@ function createTask(id, title, dueDate, priority, status, isSelected){
             },
             {
                 type: "p",
+                classList: ["due-date"],
                 textContent: dueDate
             }
         ],
@@ -42,7 +43,7 @@ function createTask(id, title, dueDate, priority, status, isSelected){
 function renderTasks(tasks, selectedTaskId){
     taskContainer.innerHTML = "";
     for(let task of tasks){
-        const element = createTask(task.id, task.title, task.dueDate, task.priority, task.status, task.id === selectedTaskId)
+        const element = createTask(task.id, task.title, task.dueDateReadable, task.priority, task.status, task.id === selectedTaskId)
 
         taskContainer.appendChild(element);
     }

@@ -1,6 +1,8 @@
 import Project from "./project";
 import { state } from "./state";
 
+const DEFAULT_PROJECT_ID = "Default";
+
 function createProject(data){
     const project = new Project(data.title);
     state.projects.push(project);
@@ -25,6 +27,8 @@ function updateProject(id, data){
 }
 
 function removeProject(id){
+    if(id === DEFAULT_PROJECT_ID) return;
+
     const index = state.projects.findIndex(project => project.id === id);
     if(index === -1){
         console.log("Removal failed: Project not found!");
@@ -36,7 +40,9 @@ function removeProject(id){
 
 function selectProject(id){
     if(id === null || id === state.selectedProjectId){
-         state.selectedProjectId = null
+        console.log("id is null or same: " + id + " - " + state.selectedProjectId)
+        state.selectedProjectId = DEFAULT_PROJECT_ID;
+        console.log("id is null or same: " + id + " - " + state.selectedProjectId)
          return;
     }
 

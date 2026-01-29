@@ -16,7 +16,16 @@
         <section id="projects">
             <header>
                 <h2>Projects</h2>
-                <button id="create-new-project-btn">Create Project</button>
+                <button class="create-button" id="create-new-project-btn"> 
+                    <span class="icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </span> 
+                    <span class="label">New Project</span>
+                </button>
             </header>
             <ul class="list-container">
             </ul>
@@ -24,7 +33,16 @@
         <section id="tasks">
             <header>
                 <h2>Tasks</h2>
-                <button id="create-new-task-btn">Create Task</button>
+                <button class="create-button" id="create-new-task-btn">
+                    <span class="icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </span>
+                    <span class="label">New Task</span>
+                </button>
             </header>
             <ul class="list-container">
                 <li><button class="list-item">Task 1</button></li>
@@ -37,45 +55,49 @@
             <div class="details-container"></div>
         </section>
 
+        <!-- PANELS -->
         <!-- Project -->
 
         <dialog id="create-project-panel">
             <form action="" method="post">
+                <h2 class="form-header">Create New Project</h2>
                 <div class="form-row">
                     <label for="new-project-title">Title</label>
-                    <input id="new-project-title" name="title" type="text">
+                    <input id="new-project-title" name="title" type="text" placeholder="Enter project title" autofocus required>
                 </div>
                 <div class="tool-list">
-                    <button id="create-project-panel-close" type="button">Close</button>
-                    <button type="submit">Create</button>
+                    <button class="cta primary" type="submit">Create</button>
+                    <button class="cta secondary" id="create-project-panel-close" type="button">Cancel</button>
                 </div>
             </form>
         </dialog>
 
         <dialog id="edit-project-panel">
             <form action="" method="post">
-                <input name="id" type="text" readonly hidden>
+                <h2 class="form-header">Edit Project</h2>
+                <input class="hidden-element" name="id" type="text" readonly hidden>
                 <div class="form-row">
                     <label for="edited-project-title">Title</label>
-                    <input id="edited-project-title" name="title" type="text">
+                    <input id="edited-project-title" name="title" type="text" placeholder="Enter project title" required>
                 </div>
                 <div class="tool-list">
-                    <button id="edit-project-panel-close" type="button">Close</button>
-                    <button type="submit">Save</button>
+                    <button class="cta primary" type="submit">Save</button>
+                    <button class="cta secondary" id="edit-project-panel-close" type="button">Cancel</button>
                 </div>
             </form>
         </dialog>
 
         <dialog id="delete-project-panel">
             <form action="" method="post">
-                <input name="id" type="text" readonly hidden>
+                <h2 class="form-header">Are you sure?</h2>
+                <input class="hidden-element" name="id" type="text" readonly>
                 <div class="form-row">
                     <label for="deleted-project-title">Title</label>
                     <input id="deleted-project-title" name="title" type="text" readonly>
                 </div>
                 <div class="tool-list">
-                    <button id="delete-project-panel-close" type="button">Close</button>
-                    <button type="submit">Submit</button>
+                    <button class="cta primary danger" type="submit">Delete</button>
+                    <button class="cta secondary" id="delete-project-panel-close" type="button">Cancel</button>
                 </div>
             </form>
         </dialog>
@@ -109,8 +131,8 @@
                     </select>
                 </div>
                 <div class="tool-list">             
-                    <button id="create-task-panel-close" type="button">Close</button>
-                    <button type="submit">Submit</button>
+                    <button class="cta primary" type="submit">Create</button>
+                    <button class="cta secondary" id="create-task-panel-close" type="button">Close</button>
                 </div>
             </form>
         </dialog>
@@ -118,12 +140,14 @@
         <dialog id="delete-task-panel">
             <form action="" method="post">
                 <input name="id" type="text" readonly hidden>
-                <br/>
-                <label for="deleted-task-title">Title</label>
-                <input id="deleted-task-title" name="title" type="text" readonly>
-                <br/>                
-                <button id="delete-task-panel-close" type="button">Close</button>
-                <button type="submit">Submit</button>
+                <div class="form-row">
+                    <label for="deleted-task-title">Title</label>
+                    <input id="deleted-task-title" name="title" type="text" readonly>
+                </div>
+                <div class="tool-list">
+                    <button class="cta primary danger" type="submit">Delete</button>
+                    <button class="cta secondary" id="delete-task-panel-close" type="button">Close</button>
+                </div>
             </form>
         </dialog>
     </main>

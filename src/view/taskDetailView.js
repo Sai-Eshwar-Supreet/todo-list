@@ -14,7 +14,7 @@ function createTaskForm(id, title, dueDate, priority, status, notes){
         children: [
             {
                 type: "div",
-                classList: ["form-row"],
+                classList: ["form-row", "hidden-element"],
                 children: [
                     {
                         type: "input",
@@ -23,8 +23,7 @@ function createTaskForm(id, title, dueDate, priority, status, notes){
                             type: "text",
                             name: "id",
                             value: id,
-                            readonly: true,
-                            hidden: true,
+                            readonly: true
                         }
                     }
                 ]
@@ -242,10 +241,12 @@ function createTaskForm(id, title, dueDate, priority, status, notes){
                 children: [
                     {
                         type: "button",
+                        classList: ["cta", "primary"],
                         textContent: "Save"
                     },
                     {
                         type: "button",
+                        classList: ["cta", "secondary", "danger"],
                         textContent: "Delete",
                         attributes: {
                             id: "delete-task-btn",
@@ -273,7 +274,7 @@ function renderTaskDetails(task){
 
     if(!task) return;
 
-    const element = createTaskForm(task.id, task.title, task.dueDate, task.priority, task.status, task.notes);
+    const element = createTaskForm(task.id, task.title, task.dueDateDI, task.priority, task.status, task.notes);
 
     
     element.addEventListener('submit', handleTaskSaveEvent);

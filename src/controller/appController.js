@@ -4,6 +4,8 @@ import { renderProjects } from "../view/projectView";
 import { renderTaskDetails } from "../view/taskDetailView";
 import { renderTasks } from "../view/taskView";
 
+import initData from "../model/init-data.json" with {type: "json"};
+
 const SAVE_KEY = "save";
 
 function initialize(){
@@ -21,15 +23,13 @@ function saveState(){
 }
 
 function loadState(){
-    console.log(state);
-
     const json = localStorage.getItem(SAVE_KEY);
-    const projects = JSON.parse(json);
+
+    const projects = !json? initData : JSON.parse(json);
 
     projects.forEach(project => loadProject(project));
 
-    console.log("After load");
-    console.log(state);
+    state.selectedProjectId = "Default";
 }
 
 function render(){

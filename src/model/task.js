@@ -1,3 +1,6 @@
+import { format } from "date-fns";
+import { formats } from "../Utils/date-utils";
+
 class Task{
     #id;
     title;
@@ -10,13 +13,20 @@ class Task{
         this.#id = crypto.randomUUID();
         this.title = title;
         this.notes = notes;
-        this.dueDate = !dueDate ? new Date(Date.now()).toLocaleDateString('en-GB') : dueDate;
+        this.dueDate = dueDate;
         this.priority = priority ?? "P0";
         this.status = status ?? "S0";
     }
 
     get id() {
         return this.#id;
+    }
+
+    get dueDateDI(){
+        return format(this.dueDate, formats.dateInput);
+    }
+    get dueDateReadable(){
+        return format(this.dueDate, formats.readable);
     }
 
     toSerializedData(){

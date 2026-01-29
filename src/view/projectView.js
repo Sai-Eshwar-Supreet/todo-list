@@ -8,7 +8,7 @@ function createProject(id, title, isSelected){
 
     const bluePrint = {
         type: "li",
-        classList: ["list-item", "project-item", isSelected? "active-project": ""],
+        classList: ["list-item", "project-item", isSelected? "active": ""],
         children: [
             {
                 type: "p",
@@ -26,7 +26,8 @@ function createProject(id, title, isSelected){
                             action: "edit"
                         },
                         attributes: {
-                            innerHTML: Icons.edit
+                            innerHTML: Icons.edit,
+                            disabled: Boolean(id === "Default")
                         }
                     },
                     {
@@ -36,7 +37,8 @@ function createProject(id, title, isSelected){
                             action: "delete"
                         },
                         attributes: {
-                            innerHTML: Icons.trash
+                            innerHTML: Icons.trash,
+                            disabled: Boolean(id === "Default")
                         }
                     }
                 ]

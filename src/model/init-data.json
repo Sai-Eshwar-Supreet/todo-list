@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Default",
+    "title": "Default",
+    "tasks": [
+      {
+        "id": "0",
+        "title": "Clean workspace",
+        "notes": "",
+        "dueDate": "2026-01-29T18:30:00.000Z",
+        "priority": "P1",
+        "status": "S0"
+      },
+      {
+        "id": "1a",
+        "title": "Social check-in",
+        "notes": "",
+        "dueDate": "2026-01-31T18:30:00.000Z",
+        "priority": "P3",
+        "status": "S0"
+      },
+      {
+        "id": "2",
+        "title": "Review finances",
+        "notes": "",
+        "dueDate": "2026-02-02T18:30:00.000Z",
+        "priority": "P2",
+        "status": "S0"
+      }
+    ]
+  }
+]
