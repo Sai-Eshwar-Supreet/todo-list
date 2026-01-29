@@ -238,8 +238,8 @@ button.create-button .icon{
 }
 
 .project-item.active{
-    border-left: 5px solid lightblue;
-    --active-color: lightblue;
+    border-left: 5px solid var(--active-color);
+    --active-color: rgb(49, 169, 209);
 }
 
 /* Task */
