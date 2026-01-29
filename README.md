@@ -53,33 +53,30 @@ All dynamic content is rendered via JavaScript.
 - CSS
 
 ## Usage
-``` 
+
+### Setup
+```bash
 git clone https://github.com/Sai-Eshwar-Supreet/todo-list.git
 cd todo-list
 npm install
 ```
 
-### Running locally
-```
+### Development
+```bash
 npm run dev
 ```
+Open: http://localhost:8080
 
-Open:
-```
-http://localhost:8080
-```
-
-### Build
-```
+### Production Build
+```bash
 npm run build
 ```
 
 ### Deployment
-```
+```bash
 npm run deploy
 ```
-Deploys `/dist` to GitHub Pages via subtree.
-
+Deploys the /dist folder to GitHub Pages via subtree.
 
 ## Acknowledgements
 - This project was completed as part of **[The Odin Project – JavaScript Course](https://www.theodinproject.com/)**
