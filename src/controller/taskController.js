@@ -10,9 +10,9 @@ const taskController = (
             const notes = formData.get("notes");
             const dueDate = formData.get("dueDate");
             const priority = formData.get("priority");
-            const isClosed = formData.get("isClosed");
+            const status = formData.get("status");
 
-            return {title, notes, dueDate, priority, isClosed};
+            return {title, notes, dueDate, priority, status};
         }
 
         function create(formData){

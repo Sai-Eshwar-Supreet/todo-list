@@ -1,9 +1,9 @@
 import { createElementRecursively } from "./factories/dom-factory";
-import { handleTaskSaveEvent } from "./inputs/task-input-manager";
+import { handleTaskDeleteEvent, handleTaskSaveEvent } from "./inputs/task-input-manager";
 
-const taskDetailsContainer = document.querySelector("#task-details > .container > .details-container");
+const taskDetailsContainer = document.querySelector("#task-details > .details-container");
 
-function createTaskForm(id, title, dueDate, priority, isClosed, notes){
+function createTaskForm(id, title, dueDate, priority, status, notes){
 
     const bluePrint = {
         type: "form",
@@ -90,7 +90,6 @@ function createTaskForm(id, title, dueDate, priority, isClosed, notes){
                         attributes: {
                             id: "detail-priority",
                             name: "priority",
-                            value: priority,
                         },
                         children: [
                             {
@@ -104,27 +103,42 @@ function createTaskForm(id, title, dueDate, priority, isClosed, notes){
                             {
                                 type: "option",
                                 textContent: "P0 - Immediate",
-                                value: "P0"
+                                attributes: {
+                                    value: "P0",
+                                    selected: Boolean(priority === "P0")
+                                }
                             },
                             {
                                 type: "option",
                                 textContent: "P1 - Critical",
-                                value: "P1"
+                                attributes: {
+                                    value: "P1",
+                                    selected: Boolean(priority === "P1")
+                                }
                             },
                             {
                                 type: "option",
                                 textContent: "P2 - Important",
-                                value: "P2"
+                                attributes: {
+                                    value: "P2",
+                                    selected: Boolean(priority === "P2")
+                                }
                             },
                             {
                                 type: "option",
                                 textContent: "P3 - Routine",
-                                value: "P3"
+                                attributes: {
+                                    value: "P3",
+                                    selected: Boolean(priority === "P3")
+                                }
                             },
                             {
                                 type: "option",
                                 textContent: "P4 - Low / Optional",
-                                value: "P4"
+                                attributes: {
+                                    value: "P4",
+                                    selected: Boolean(priority === "P4")
+                                }
                             }
                         ]
                     }
@@ -136,19 +150,67 @@ function createTaskForm(id, title, dueDate, priority, isClosed, notes){
                 children: [
                     {
                         type: "label",
-                        textContent: "Is Closed",
+                        textContent: "Status",
                         attributes: {
-                            for: "detail-closed"
+                            for: "detail-status"
                         }
                     },
                     {
-                        type: "input",
+                        type: "select",
                         attributes: {
-                            id: "detail-closed",
-                            type: "checkbox",
-                            name: "isClosed",
-                            checked: Boolean(isClosed),
-                        }
+                            id: "detail-status",
+                            name: "status",
+                        },
+                        children: [
+                            {
+                                type: "button",
+                                children: [
+                                    {
+                                        type: "selectedcontent"
+                                    }
+                                ]
+                            },
+                            {
+                                type: "option",
+                                textContent: "S0 - Not Started",
+                                attributes: {
+                                    value: "S0",
+                                    selected: Boolean(status === "S0")
+                                }
+                            },
+                            {
+                                type: "option",
+                                textContent: "S1 - In Progress",
+                                attributes: {
+                                    value: "S1",
+                                    selected: Boolean(status === "S1")
+                                }
+                            },
+                            {
+                                type: "option",
+                                textContent: "S2 - Blocked",
+                                attributes: {
+                                    value: "S2",
+                                    selected: Boolean(status === "S2")
+                                }
+                            },
+                            {
+                                type: "option",
+                                textContent: "S3 - Review",
+                                attributes: {
+                                    value: "S3",
+                                    selected: Boolean(status === "S3")
+                                }
+                            },
+                            {
+                                type: "option",
+                                textContent: "S4 - Completed",
+                                attributes: {
+                                    value: "S4",
+                                    selected: Boolean(status === "S4")
+                                }
+                            }
+                        ]
                     }
                 ]
             },
@@ -176,11 +238,24 @@ function createTaskForm(id, title, dueDate, priority, isClosed, notes){
             },
             {
                 type: "div",
-                classList: ["form-row"],
+                classList: ["tool-list"],
                 children: [
                     {
                         type: "button",
                         textContent: "Save"
+                    },
+                    {
+                        type: "button",
+                        textContent: "Delete",
+                        attributes: {
+                            id: "delete-task-btn",
+                            type: "button"
+                        },
+                        dataset: {
+                            id, 
+                            title,
+                            action: "delete"
+                        }
                     }
                 ]
             }
@@ -198,9 +273,13 @@ function renderTaskDetails(task){
 
     if(!task) return;
 
-    const element = createTaskForm(task.id, task.title, task.dueDate, task.priority, task.isClosed, task.notes);
+    const element = createTaskForm(task.id, task.title, task.dueDate, task.priority, task.status, task.notes);
 
+    
     element.addEventListener('submit', handleTaskSaveEvent);
+    
+    const deleteBtn = element.querySelector("#delete-task-btn");
+    deleteBtn.addEventListener('click', handleTaskDeleteEvent)
 
     taskDetailsContainer.appendChild(element);
 }

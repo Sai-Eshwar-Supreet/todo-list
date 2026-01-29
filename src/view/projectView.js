@@ -1,35 +1,42 @@
+import { Icons } from "../Utils/icons";
 import { createElementRecursively } from "./factories/dom-factory";
 import { handleProjectClickEvent } from "./inputs/project-input-manager";
 
-const projectContainer = document.querySelector("#projects > .container > .list-container");
+const projectContainer = document.querySelector("#projects > .list-container");
 
-function createProject(id, title){
+function createProject(id, title, isSelected){
 
     const bluePrint = {
         type: "li",
+        classList: ["list-item", "project-item", isSelected? "active-project": ""],
         children: [
             {
+                type: "p",
+                classList: "title",
+                textContent: title,
+            },
+            {
                 type: "div",
-                classList: [],
+                classList: ["tool-list"],
                 children: [
                     {
-                        type: "p",
-                        textContent: title,
-                    },
-                    {
                         type: "button",
-                        textContent: "Edit",
                         dataset: {
                             id,
                             action: "edit"
+                        },
+                        attributes: {
+                            innerHTML: Icons.edit
                         }
                     },
                     {
                         type: "button",
-                        textContent: "Delete",
                         dataset: {
                             id,
                             action: "delete"
+                        },
+                        attributes: {
+                            innerHTML: Icons.trash
                         }
                     }
                 ]
@@ -50,10 +57,10 @@ function createProject(id, title){
 };
 
 
-function renderProjects(projects){
+function renderProjects(projects, selectedId){
     projectContainer.innerHTML = "";
     for(let project of projects){
-        const element = createProject(project.id, project.title)
+        const element = createProject(project.id, project.title, project.id === selectedId)
 
         projectContainer.appendChild(element);
     }

@@ -13,7 +13,7 @@ function selectTask(id) {
     taskController.select(id);
 }
 
-function handleTaskClickEvent(event){
+function handleTaskSelectEvent(event){
 
     const trigger = event.target.closest("[data-action]");
 
@@ -21,17 +21,23 @@ function handleTaskClickEvent(event){
 
     const action = trigger.dataset.action;
 
-    if(!action) return;
-
-    switch(action){
-        case "select":
-            selectTask(trigger.dataset.id);
-            break;
-        case "delete":
-            deleteTaskPanel.open({id: trigger.dataset.id, title: event.currentTarget.dataset.title });
-            break;
-    }
+    if(!action || action !== "select") return;
+    selectTask(trigger.dataset.id);
 }
+function handleTaskDeleteEvent(event){
+
+    const trigger = event.target.closest("[data-action]");
+
+    if(!trigger) return;
+
+    const action = trigger.dataset.action;
+
+    if(!action  || action !== "delete") return;
+
+    deleteTaskPanel.open({id: trigger.dataset.id, title: trigger.dataset.title });
+}
+
+
 
 function handleTaskSaveEvent(event){
     event.preventDefault();
@@ -45,4 +51,4 @@ function handleTaskSaveEvent(event){
 const createTaskBtn = document.querySelector("#create-new-task-btn");
 createTaskBtn.addEventListener('click', () => createTaskPanel.open());
 
-export { handleTaskClickEvent, handleTaskSaveEvent}
+export { handleTaskSelectEvent, handleTaskDeleteEvent, handleTaskSaveEvent}

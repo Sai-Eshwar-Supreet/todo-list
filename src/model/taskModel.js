@@ -7,7 +7,7 @@ function createTask(projectId, data){
         console.log("Update failed: Project not found!");
         return;
     }
-    const task = new Task(data.title, data.notes, data.dueDate, data.priority, data.isClosed);
+    const task = new Task(data.title, data.notes, data.dueDate, data.priority, data.status);
 
     project.tasks.push(task);
 
@@ -33,7 +33,7 @@ function updateTask(projectId, taskId, data){
     task.notes = data.notes;
     task.dueDate = data.dueDate;
     task.priority = data.priority;
-    task.isClosed = data.isClosed;
+    task.status = data.status;
 
     project.sortTasks();
 }
@@ -57,6 +57,11 @@ function removeTask(projectId, taskId){
 }
 
 function selectTask(projectId, taskId){
+    if(projectId === null || taskId === null || taskId === state.selectedTaskId){
+        state.selectedTaskId = null;
+        return;
+    }
+    
     const project = state.projects.find(project => project.id === projectId);
     if(!project){
         console.log("Selection failed: Project not found!");

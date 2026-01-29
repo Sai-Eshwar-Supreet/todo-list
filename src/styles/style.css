@@ -11,3 +11,219 @@
 img{
     display: block;
 }
+
+/* ==================== TOKENS ==================== */
+
+:root{
+
+    /* Font sizes */
+    --font-size-large: 1.5rem;
+    --font-size-medium: 1.25rem;
+    --font-size-normal: 1rem;
+    --font-size-small: 0.85rem;
+
+    /* Font Weights */
+    --font-weight-regular: 400;
+    --font-weight-semi: 500;
+    --font-weight-bold: 700; 
+
+    /* Spacing */
+    --space-small: 0.5rem;
+    --space-medium: 1rem;
+    --space-large: 1.5rem;
+
+    /* Border radius */
+    --radius-small: 8px;
+
+    /* Shadows */
+    --shadow-lift: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
+
+    /* Colors */
+    --color-bg-base: #f5eee9;
+    --color-bg-alt: #f1ddce;
+    --color-text-primary: #3b1a01;
+    --color-text-secondary: #8b6d58;
+    --color-accent: #db6c17;
+}
+
+/* ==================== LAYOUT ==================== */
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: stretch;
+}
+
+body > header{
+    max-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: var(--space-medium);
+}
+
+main{
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(500px, 1fr));
+    gap: var(--space-large);
+
+    padding: 0 var(--space-large);
+}
+
+main section{
+    display: flex;
+    flex-direction: column;
+}
+
+section > header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 25px;
+
+    padding-bottom: var(--space-small);
+    border-bottom: 1px solid black;
+    margin-bottom: var(--space-medium);
+}
+
+.list-container{
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-small);
+}
+
+.list-container .list-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 50px;
+    gap: var(--space-small);
+
+    padding: var(--space-small);
+}
+
+.list-container .list-item :last-child{
+    margin-inline-start: auto;
+}
+
+.list-item p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+
+.tool-list{
+    display: flex;
+    justify-content: stretch;
+    gap: var(--space-small);
+}
+
+.tool-list button{
+    flex: 1;
+}
+
+.list-item .tool-list{
+    visibility: hidden;
+}
+
+.list-item:hover .tool-list,
+.list-item:focus .tool-list,
+.list-item:focus-visible .tool-list{
+    visibility: visible;
+}
+
+section{
+    padding: var(--space-large);
+    border-radius: var(--radius-small) var(--radius-small) 0 0;
+
+    background-color: white;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+
+.list-container:empty::before,
+.details-container:empty::before{
+    content: "Nothing to show";
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Projects */
+
+.project-item button{
+    border: 0;
+    background: none;
+}
+
+.project-item button svg{
+    color: rgba(0, 0, 0, 0.25);
+}
+
+.project-item button:hover svg{
+    color: black;
+}
+
+
+.active-task,
+.active-project{
+    outline: 1px solid red;
+    background-color: lightgoldenrodyellow;
+}
+
+/* Forms */
+
+dialog{
+    position: fixed;
+
+    min-width: min(90%, 700px);
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    margin: auto;
+    padding: var(--space-large);
+    border: 2px solid black;
+    border-radius: var(--radius-small);
+
+    background-color: white;
+    color: black;
+
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+}
+
+.form-row{
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-small);
+}
+
+
+
+/* ==================== TYPOGRAPHY ==================== */
+
+body{
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    color: var(--color-text-primary);
+
+    background-color: lightgrey;
+}

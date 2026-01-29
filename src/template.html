@@ -4,76 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>To do app</h1>
-            <div class="tool-bar">
-                <button class="tool">New Task</button>
-            </div>
-        </div>
+        <h1>To Do App</h1>
     </header>
     <main>
         <section id="projects">
-            <div class="container">
-                <header>
-                    <h2>Projects</h2>
-                    <button id="create-new-project-btn">Create Project</button>
-                </header>
-                <ul class="list-container">
-                </ul>
-            </div>
+            <header>
+                <h2>Projects</h2>
+                <button id="create-new-project-btn">Create Project</button>
+            </header>
+            <ul class="list-container">
+            </ul>
         </section>
         <section id="tasks">
-            <div class="container">
-                <header>
-                    <h2>Tasks</h2>
-                    <button id="create-new-task-btn">Create Task</button>
-                </header>
-                <ul class="list-container">
-                    <li><button class="list-item">Task 1</button></li>
-                </ul>
-            </div>
+            <header>
+                <h2>Tasks</h2>
+                <button id="create-new-task-btn">Create Task</button>
+            </header>
+            <ul class="list-container">
+                <li><button class="list-item">Task 1</button></li>
+            </ul>
         </section>
         <section id="task-details">
-            <div class="container">
+            <header>
                 <h2>Task details</h2>
-                <div class="details-container"></div>
-            </div>
+            </header>
+            <div class="details-container"></div>
         </section>
+
+        <!-- Project -->
+
         <dialog id="create-project-panel">
             <form action="" method="post">
-                <label for="new-project-title">Title</label>
-                <input id="new-project-title" name="title" type="text">
-                <br/>
-                <button id="create-project-panel-close" type="button">Close</button>
-                <button type="submit">Submit</button>
+                <div class="form-row">
+                    <label for="new-project-title">Title</label>
+                    <input id="new-project-title" name="title" type="text">
+                </div>
+                <div class="tool-list">
+                    <button id="create-project-panel-close" type="button">Close</button>
+                    <button type="submit">Create</button>
+                </div>
             </form>
         </dialog>
 
         <dialog id="edit-project-panel">
             <form action="" method="post">
                 <input name="id" type="text" readonly hidden>
-                <br/>
-                <label for="edited-project-title">Title</label>
-                <input id="edited-project-title" name="title" type="text">
-                <br/>
-                
-                <button id="edit-project-panel-close" type="button">Close</button>
-                <button type="submit">Submit</button>
+                <div class="form-row">
+                    <label for="edited-project-title">Title</label>
+                    <input id="edited-project-title" name="title" type="text">
+                </div>
+                <div class="tool-list">
+                    <button id="edit-project-panel-close" type="button">Close</button>
+                    <button type="submit">Save</button>
+                </div>
             </form>
         </dialog>
 
         <dialog id="delete-project-panel">
             <form action="" method="post">
                 <input name="id" type="text" readonly hidden>
-                <br/>
-                <label for="deleted-project-title">Title</label>
-                <input id="deleted-project-title" name="title" type="text" readonly>
-                <br/>                
-                <button id="delete-project-panel-close" type="button">Close</button>
-                <button type="submit">Submit</button>
+                <div class="form-row">
+                    <label for="deleted-project-title">Title</label>
+                    <input id="deleted-project-title" name="title" type="text" readonly>
+                </div>
+                <div class="tool-list">
+                    <button id="delete-project-panel-close" type="button">Close</button>
+                    <button type="submit">Submit</button>
+                </div>
             </form>
         </dialog>
 
@@ -105,7 +108,7 @@
                         <option value="P4">P4 - Low / Optional</option>
                     </select>
                 </div>
-                <div>             
+                <div class="tool-list">             
                     <button id="create-task-panel-close" type="button">Close</button>
                     <button type="submit">Submit</button>
                 </div>

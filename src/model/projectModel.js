@@ -8,6 +8,12 @@ function createProject(data){
     return project.id;
 }
 
+function loadProject(serializedData){
+    const project = Project.fromSerializedData(serializedData);
+
+    state.projects.push(project);
+}
+
 function updateProject(id, data){
     const project = state.projects.find(project => project.id === id);
     if(!project){
@@ -29,6 +35,11 @@ function removeProject(id){
 }
 
 function selectProject(id){
+    if(id === null || id === state.selectedProjectId){
+         state.selectedProjectId = null
+         return;
+    }
+
     if(state.projects.some(project => project.id === id)){
         state.selectedProjectId = id;
     }
@@ -37,4 +48,4 @@ function selectProject(id){
     }
 }
 
-export {createProject, updateProject, removeProject, selectProject};
+export {createProject, updateProject, removeProject, selectProject, loadProject};

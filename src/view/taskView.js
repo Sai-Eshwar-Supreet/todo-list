@@ -1,56 +1,48 @@
 import { createElementRecursively } from "./factories/dom-factory";
-import { handleTaskClickEvent } from "./inputs/task-input-manager";
+import { handleTaskSelectEvent } from "./inputs/task-input-manager";
 
-const taskContainer = document.querySelector("#tasks > .container > .list-container");
+const taskContainer = document.querySelector("#tasks > .list-container");
 
-function createTask(id, title, dueDate, isComplete){
+function createTask(id, title, dueDate, priority, status, isSelected){
 
     const bluePrint = {
         type: "li",
+        classList: ["list-item", "task-item", `task-${priority}`, isSelected? "active-task": ""],
         children: [
             {
-                type: "div",
-                classList: [],
-                children: [
-                    {
-                        type: "p",
-                        textContent: title,
-                    },
-                    {
-                        type: "p",
-                        textContent: dueDate
-                    },
-                    {
-                        type: "button",
-                        textContent: "Delete",
-                        dataset: {
-                            id,
-                            action: "delete"
-                        }
-                    }
-                ]
+                type: "p",
+                classList: ["status-indicator"],
+                textContent: status
+            },
+            {
+                type: "p",
+                classList: ["title"],
+                textContent: title,
+            },
+            {
+                type: "p",
+                textContent: dueDate
             }
         ],
         dataset: {
             id,
             title,
-            isComplete,
             action: "select"
         },
     };
 
     const taskItemUI = createElementRecursively(bluePrint);
 
-    taskItemUI.addEventListener('click', handleTaskClickEvent);
+    taskItemUI.addEventListener('click', handleTaskSelectEvent);
 
     return taskItemUI;
 };
 
 
-function renderTasks(tasks){
+function renderTasks(tasks, selectedTaskId){
     taskContainer.innerHTML = "";
     for(let task of tasks){
-        const element = createTask(task.id, task.title, task.dueDate, task.isComplete)
+        const element = createTask(task.id, task.title, task.dueDate, task.priority, task.status, task.id === selectedTaskId)
 
         taskContainer.appendChild(element);
     }

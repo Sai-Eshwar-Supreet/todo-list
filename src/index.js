@@ -1,7 +1,7 @@
 import "./styles/style.css";
-import { render } from "./controller/appController";
+import { initialize } from "./controller/appController";
 
-render();
+initialize();
 // ======================================== UI 
 // -------------------- INPUT
 // -------------------- UPDATES/OUTPUT
