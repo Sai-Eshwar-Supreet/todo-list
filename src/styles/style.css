@@ -177,11 +177,51 @@ ul{
     color: black;
 }
 
+.list-item.active-project{
+    background-color: #e4eff8;
+    border-left: 5px solid lightblue;
+}
 
-.active-task,
-.active-project{
-    outline: 1px solid red;
-    background-color: lightgoldenrodyellow;
+/* Task */
+
+.list-item.task-item.task-P0{
+    --priority-color: #D64545;
+}
+
+
+.list-item.task-item.task-P1{
+    --priority-color: #E67E22;
+}
+
+.list-item.task-item.task-P2{
+    --priority-color: #F4C542;
+}
+
+.list-item.task-item.task-P3{
+    --priority-color: #4A90E2;
+}
+
+.list-item.task-item.task-P4{
+    --priority-color: #9AA4AE;
+}
+
+
+.list-item.task-item{
+    --priority-color: #9AA4AE;
+    border-left: 5px solid var(--priority-color);
+}
+
+.task-item .status-indicator{
+    font-size: 0.75em;
+
+    border-radius: var(--radius-small);
+    background-color: var(--priority-color);
+    color: white;
+    padding: calc(var(--space-small) / 2) var(--space-small);
+}
+
+.active-task{
+    background-color: #e4eff8;
 }
 
 /* Forms */
