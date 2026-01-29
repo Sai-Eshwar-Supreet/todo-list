@@ -48,8 +48,6 @@ const taskController = (
         
         function select(id){
             selectTask(state.selectedProjectId, id);
-
-            saveState();
             render();
         }
 

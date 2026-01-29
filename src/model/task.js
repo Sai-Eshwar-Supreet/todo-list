@@ -41,7 +41,7 @@ class Task{
     }
 
     static fromSerializedData(obj){
-        const task = new Task(obj.title, obj.notes, obj.dueDate, obj.priority, obj.progress);
+        const task = new Task(obj.title, obj.notes, new Date(obj.dueDate), obj.priority, obj.status);
         task.#id = obj.id;
 
         return task;

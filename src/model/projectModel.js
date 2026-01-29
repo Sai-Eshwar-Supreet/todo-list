@@ -54,4 +54,4 @@ function selectProject(id){
     }
 }
 
-export {createProject, updateProject, removeProject, selectProject, loadProject};
+export {createProject, updateProject, removeProject, selectProject, loadProject, DEFAULT_PROJECT_ID};

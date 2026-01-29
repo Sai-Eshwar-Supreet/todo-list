@@ -32,8 +32,6 @@ const projectController = (
         
         function select(id){
             selectProject(id);
-
-            saveState();
             render();
         }
 

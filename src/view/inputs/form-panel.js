@@ -18,9 +18,9 @@ class FormPanel{
         this.#form.reset();
 
         if(!!data){
-            for(let key of Object.keys(data)){
+            for(let [key, value] of Object.entries(data)){
                 const input = this.#form.querySelector(`[name="${key}"]`);
-                input.setAttribute("value", data[key]);
+                input.value = value;
             }
         }
 
